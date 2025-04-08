@@ -1,5 +1,5 @@
 function outputData() {
-    var spreadsheet = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/1m06Bhz9Fku6NdAfT70g_Hr5in9Y89xI__jE8oB09k5k/edit?gid=0#gid=0');
+    var spreadsheet = SpreadsheetApp.openByUrl('');
     var sheet = spreadsheet.getSheetByName('入力用シート');
     var resultSheet = spreadsheet.getSheetByName('出力用シート');
   
