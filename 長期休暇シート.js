@@ -14,6 +14,26 @@ function organizeSheetData() {
       const uniqueValues = [...new Set(columnData.filter(val => val !== ""))];
       return uniqueValues;
     });
+    const outputSheetName = "整理結果";
+    let outputSheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(outputSheetName);
+    
+    if (!outputSheet) {
+      outputSheet = SpreadsheetApp.getActiveSpreadsheet().insertSheet(outputSheetName);
+    } else {
+      outputSheet.clear(); 
+    }
+
+    outputSheet.getRange(1, 1, 1, headers.length).setValues([headers]);
+
+
+    const maxUniqueLength = Math.max(...uniqueValuesByColumn.map(col => col.length));
+
+    for (let row = 0; row < maxUniqueLength; row++) {
+      const rowData = uniqueValuesByColumn.map(col => col[row] || "");
+      outputSheet.getRange(row + 2, 1, 1, headers.length).setValues([rowData]);
+    }
+
+  
   
     headers.forEach((header, i) => {
       Logger.log(`【${header}】`);
