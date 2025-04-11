@@ -34,7 +34,15 @@ function organizeSheetData() {
     }
 
   
-  
+    const now = new Date();
+    outputSheet.getRange(maxUniqueLength + 3, 1).setValue(`処理完了時刻: ${now.toLocaleString()}`);
+
+
+    const sourceSheetName = "データ";
+    outputSheet.getRange(maxUniqueLength + 4, 1).setValue(`元シート: ${sourceSheetName}`);
+
+
+    SpreadsheetApp.getUi().alert("ユニーク値の整理が完了しました！");
     headers.forEach((header, i) => {
       Logger.log(`【${header}】`);
       Logger.log(uniqueValuesByColumn[i].join(", "));
