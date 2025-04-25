@@ -67,9 +67,4 @@ function organizeSheetData() {
 
   headers.forEach((header, i) => {
     outputSheet.getRange(statsStartRow + i + 1, 1).setValue(`${header}`);
-    outputSheet.getRange(statsStartRow + i + 1, 2).setValue(`${emptyCountByColumn[i]} 件`);
-  });
-
-  SpreadsheetApp.getActiveSpreadsheet().setActiveSheet(outputSheet);
-  SpreadsheetApp.getActiveSpreadsheet().moveActiveSheet(1);
-}
+  }
